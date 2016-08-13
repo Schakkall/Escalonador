@@ -3,19 +3,16 @@ package escalonador;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class FilaProcessos {
-	protected List<Processo> fila;
+	protected LinkedList<Processo> fila;
 
 	public FilaProcessos() {
 		this.fila = new LinkedList<>();
 	}
 
-	
 	public FilaProcessos(String arquivo) {
 		this.fila = new LinkedList<>();
 		try {
@@ -32,54 +29,44 @@ public class FilaProcessos {
 	}
 
 	public void insere(Processo p) {
-		this.fila.add(p);
+		this.fila.addLast(p);
 	}
 
 	public Processo remove() {
-		return this.fila.remove(0);
+		return (!this.fila.isEmpty()) ? this.fila.removeFirst() : null;
 	}
-	
+
+	public Processo cabeca() {
+		return (!this.fila.isEmpty()) ? this.fila.getFirst() : null;
+	}
+
 	public void remove(Processo p) {
-		int cont = 0;
-		for (Processo processo : fila) {
-			if (p.getId() == processo.getId()){
-				this.fila.remove(cont);
-				break;
-			}
-			cont++;
-		}
+		this.fila.remove(p);
 	}
 
 	public boolean vazia() {
 		return this.fila.isEmpty();
 	}
 
-	
 	public List<Processo> getFila() {
 		return fila;
 	}
 
-
-	public void setFila(List<Processo> fila) {
-		this.fila = fila;
-	}
-
-
-	public void imprimrTempos(String algoritmo) {
+	public void imprimirTempos(String algoritmo) {
 		/*
-		 * Tempo de espera: somatório dos tempos de espera (Obs: Da entrada na
-		 * fila até início da execução) Tempo de espera médio: média aritmética
-		 * dos tempos de espera de todos os processos
+		 * Tempo de espera: tempo gasto aguardando ser processado.(Obs: Da
+		 * entrada na fila até o final da execução). Tempo de espera médio:
+		 * média aritmética dos tempos de espera de todos os processos na fila
 		 */
 		/*
 		 * Tempo de resposta: tempo gasto desde a entrada na fila até a primeira
-		 * execução Tempo de resposta médio: média aritmética dos tempos de
-		 * resposta de todos os processos
+		 * execução. Tempo de resposta médio: média aritmética dos tempos de
+		 * resposta de todos os processos na fila
 		 */
 		/*
 		 * Tempo de retorno: tempo gasto desde início do processo até sua
-		 * finalização Tempo de retorno médio: média aritmética dos tempos de
-		 * retorno de todos os processos
+		 * finalização. Tempo de retorno médio: média aritmética dos tempos de
+		 * retorno de todos os processos na fila
 		 */
 
 		float esperaTotal = 0;
@@ -91,9 +78,10 @@ public class FilaProcessos {
 			retornoTotal += p.getTempoRetorno();
 			respostaTotal += p.getTempoResposta();
 		}
-		System.out.println(algoritmo + " " + retornoTotal / this.fila.size() + " " + respostaTotal / this.fila.size()
-				+ " " + esperaTotal / this.fila.size());
 
+		int qtd = this.fila.size();
+
+		System.out.printf("%s %.1f %.1f %.1f\n", algoritmo, retornoTotal / qtd, respostaTotal / qtd, esperaTotal / qtd);
 	}
 
 }

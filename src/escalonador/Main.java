@@ -4,20 +4,32 @@ public class Main {
 
 	public static void main(String[] args) {
 		String lote = "F:\\WorkSpace\\Escalonamento\\lote.txt";
-		
-		Processador CPU = new FCFS();
-		FilaProcessos prontos = new FilaProcessos(lote);
-		FilaProcessos finalizados = new FilaProcessos();
-		CPU.executar(prontos, finalizados);
-		finalizados.imprimrTempos("FCFS");
 
+		Processador CPU;
+		FilaProcessos novos;
+		FilaProcessos prontos;
+		FilaProcessos finalizados;
+
+		CPU = new FCFS();
+		novos = new FilaProcessos(lote);
+		prontos = new FilaProcessos();
+		finalizados = new FilaProcessos();
+		CPU.executar(novos, prontos, finalizados);
+		finalizados.imprimirTempos("FCFS");
 
 		CPU = new SJF();
-		prontos = new FilaProcessos(lote);
+		novos = new FilaProcessos(lote);
+		prontos = new FilaProcessos();
 		finalizados = new FilaProcessos();
-		CPU.executar(prontos, finalizados);
-		finalizados.imprimrTempos("SJF");
+		CPU.executar(novos, prontos, finalizados);
+		finalizados.imprimirTempos("SJF");
 
+		CPU = new RR(2);
+		novos = new FilaProcessos(lote);
+		prontos = new FilaProcessos();
+		finalizados = new FilaProcessos();
+		CPU.executar(novos, prontos, finalizados);
+		finalizados.imprimirTempos("RR");
 	}
 
 }
