@@ -14,4 +14,8 @@ public class FCFS extends Processador {
 		
 		this.tempoExecucao += p.getTempoDuracao();
 	}	
+	
+	public  Processo getProximoProcesso(FilaProcessos f){
+		return f.getFila().get(0);
+	}
 }

@@ -13,10 +13,20 @@ public class SJF extends Processador {
 		*/
 		
 		this.tempoExecucao += p.getTempoDuracao();
-	}	
-	
-
-	private FilaProcessos organizarProcessos(){
-		return null;
 	}
+	
+	public  Processo getProximoProcesso(FilaProcessos f){
+		int menor = 99999;
+		Processo result = null;
+		for (Processo p : f.getFila()) {
+			if (p.getTempoInicial() <= this.tempoExecucao){
+				if (p.getTempoDuracao() < menor){
+					result = p;
+					menor = p.getTempoDuracao();
+				}
+			}
+		}
+		return result;
+	}
+	
 }
