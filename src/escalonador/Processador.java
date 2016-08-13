@@ -1,7 +1,7 @@
 package escalonador;
 
 public abstract class Processador {
-	protected boolean impressaoHabilitada = true;
+	protected boolean impressaoHabilitada = false;
 	protected int tempoExecucao = 0;
 
 	protected abstract void executar(Processo p);
