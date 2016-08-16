@@ -14,6 +14,6 @@ public class FCFS extends Processador {
 	}	
 	
 	public  Processo escalonar(FilaProcessos f){
-		return f.getFila().get(0);
+		return f.getCabeca();
 	}
 }

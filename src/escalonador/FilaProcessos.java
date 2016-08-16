@@ -3,6 +3,7 @@ package escalonador;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class FilaProcessos {
 		} catch (IOException e) {
 			System.out.println("Ocorreu um erro ao carregar o arquivo de processos");
 		}
-
+		this.ordenarPorTempoInicial();
 	}
 
 	public void insere(Processo p) {
@@ -36,7 +37,7 @@ public class FilaProcessos {
 		return (!this.fila.isEmpty()) ? this.fila.removeFirst() : null;
 	}
 
-	public Processo cabeca() {
+	public Processo getCabeca() {
 		return (!this.fila.isEmpty()) ? this.fila.getFirst() : null;
 	}
 
@@ -50,6 +51,13 @@ public class FilaProcessos {
 
 	public List<Processo> getFila() {
 		return fila;
+	}
+	
+	public final void ordenarPorTempoInicial(){
+		Comparator<Processo> comparador = (p1, p2) -> {
+			return Integer.compare(p1.getTempoInicial(), p2.getTempoInicial());
+		};
+		this.fila.sort(comparador);//Isso aqui é um mergesort
 	}
 
 	public void imprimirTempos(String algoritmo) {

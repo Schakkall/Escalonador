@@ -15,14 +15,14 @@ public abstract class Processador {
 	}
 
 	private void prepararNovos(FilaProcessos novos, FilaProcessos prontos) {
-		while ((novos.cabeca() != null) && (novos.cabeca().getTempoInicial() <= this.tempoExecucao)) {
+		while ((novos.getCabeca() != null) && (novos.getCabeca().getTempoInicial() <= this.tempoExecucao)) {
 			prontos.insere(novos.remove());
 		}
 	}
 
 	private void descartarTempoOcioso(FilaProcessos novos) {
-		Processo p = novos.cabeca();
-		this.tempoExecucao = (this.tempoExecucao < p.getTempoInicial() ? p.getTempoInicial() : 0);
+		Processo p = novos.getCabeca();
+		this.tempoExecucao = (this.tempoExecucao < p.getTempoInicial() ? p.getTempoInicial() : this.tempoExecucao);
 	}
 
 	public void executar(FilaProcessos novos, FilaProcessos prontos, FilaProcessos finalizados) {
