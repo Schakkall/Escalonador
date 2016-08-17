@@ -20,7 +20,7 @@ public class Processo {
 	
 	public Processo(){}
 	
-	public static Processo novoProcesso(Processo p){
+	public static Processo copiar(Processo p){
 		Processo result = new Processo();
 		result.setId(p.getId());
 		result.setTempoDuracao(p.getTempoDuracao());
