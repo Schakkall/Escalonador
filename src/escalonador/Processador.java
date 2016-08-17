@@ -1,6 +1,7 @@
 package escalonador;
 
 public abstract class Processador {
+	private FilaProcessos prontos = new FilaProcessos();
 	protected boolean impressaoHabilitada = false;
 	protected int tempoExecucao = 0;
 
@@ -25,7 +26,7 @@ public abstract class Processador {
 		this.tempoExecucao = (this.tempoExecucao < p.getTempoInicial() ? p.getTempoInicial() : this.tempoExecucao);
 	}
 
-	public void executar(FilaProcessos novos, FilaProcessos prontos, FilaProcessos finalizados) {
+	public void executar(FilaProcessos novos, FilaProcessos finalizados) {
 		this.descartarTempoOcioso(novos);
 		this.prepararNovos(novos, prontos);
 

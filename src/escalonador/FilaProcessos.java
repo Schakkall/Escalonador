@@ -13,6 +13,13 @@ public class FilaProcessos {
 	public FilaProcessos() {
 		this.fila = new LinkedList<>();
 	}
+	
+	public FilaProcessos(FilaProcessos f) {
+		this.fila = new LinkedList<>();
+		for (Processo processo : f.fila) {
+			this.fila.add(processo);
+		}
+	}
 
 	public FilaProcessos(String arquivo) {
 		this.fila = new LinkedList<>();

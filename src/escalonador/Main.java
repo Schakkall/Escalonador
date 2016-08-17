@@ -7,28 +7,27 @@ public class Main {
 
 		Processador CPU;
 		FilaProcessos novos;
-		FilaProcessos prontos;
+		FilaProcessos processos;
 		FilaProcessos finalizados;
-
+		
+		processos = new FilaProcessos(lote);
+		
 		CPU = new FCFS();
-		novos = new FilaProcessos(lote);
-		prontos = new FilaProcessos();
+		novos = new FilaProcessos(processos);
 		finalizados = new FilaProcessos();
-		CPU.executar(novos, prontos, finalizados);
+		CPU.executar(novos, finalizados);
 		finalizados.imprimirTempos("FCFS");
 
 		CPU = new SJF();
-		novos = new FilaProcessos(lote);
-		prontos = new FilaProcessos();
+		novos = new FilaProcessos(processos);
 		finalizados = new FilaProcessos();
-		CPU.executar(novos, prontos, finalizados);
+		CPU.executar(novos, finalizados);
 		finalizados.imprimirTempos("SJF");
 
 		CPU = new RR(2);
-		novos = new FilaProcessos(lote);
-		prontos = new FilaProcessos();
 		finalizados = new FilaProcessos();
-		CPU.executar(novos, prontos, finalizados);
+		novos = new FilaProcessos(processos);
+		CPU.executar(novos, finalizados);
 		finalizados.imprimirTempos("RR");
 	}
 

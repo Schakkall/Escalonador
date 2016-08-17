@@ -18,6 +18,11 @@ public class Processo {
 		this.tempoEspera    = 0;
 	}
 	
+	public static Processo Processo(Processo p){
+		Processo p1 = new Processo();
+		return null;
+	}
+	
 	public Processo(int tempoInicial, int tempoDuracao, int id){
 		this.id = id;
 		this.tempoInicial = tempoInicial;
