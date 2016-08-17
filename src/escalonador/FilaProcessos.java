@@ -17,7 +17,7 @@ public class FilaProcessos {
 	public FilaProcessos(FilaProcessos f) {
 		this.fila = new LinkedList<>();
 		for (Processo processo : f.fila) {
-			this.fila.add(processo);
+			this.fila.add(Processo.novoProcesso(processo));
 		}
 	}
 

@@ -18,9 +18,18 @@ public class Processo {
 		this.tempoEspera    = 0;
 	}
 	
-	public static Processo Processo(Processo p){
-		Processo p1 = new Processo();
-		return null;
+	public Processo(){}
+	
+	public static Processo novoProcesso(Processo p){
+		Processo result = new Processo();
+		result.setId(p.getId());
+		result.setTempoDuracao(p.getTempoDuracao());
+		result.setTempoInicial(p.getTempoInicial());
+		result.setTempoEspera(p.getTempoEspera());
+		result.setTempoExecutado(p.getTempoExecutado());
+		result.setTempoResposta(p.getTempoResposta());
+		result.setTempoRetorno(p.getTempoRetorno());
+		return result;
 	}
 	
 	public Processo(int tempoInicial, int tempoDuracao, int id){
