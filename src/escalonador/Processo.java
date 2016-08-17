@@ -7,8 +7,8 @@ public class Processo {
 	private int tempoExecutado = 0;
 	private int tempoEspera = 0;
 	private int tempoRetorno = 0;
+	private int tempoResposta = 0;	
 	private boolean jaRespondido = false;
-	private int tempoResposta = 0;
 
 	public Processo(String strProcesso, int id) {
 		String[] strProParts = strProcesso.split(" ");
@@ -17,6 +17,8 @@ public class Processo {
 		this.id = id;
 		this.tempoExecutado = 0;
 		this.tempoEspera = 0;
+		this.tempoRetorno = 0;
+		this.tempoResposta = 0;			
 		this.jaRespondido = false;
 	}
 
@@ -42,6 +44,9 @@ public class Processo {
 		this.tempoDuracao = tempoDuracao;
 		this.tempoExecutado = 0;
 		this.tempoEspera = 0;
+		this.tempoRetorno = 0;
+		this.tempoResposta = 0;			
+		this.jaRespondido = false;		
 	}
 
 	public boolean equals(Processo p) {
@@ -101,7 +106,7 @@ public class Processo {
 	}
 
 	public int getTempoResposta() {
-		return (jaRespondido) ? tempoResposta : 0;
+		return (jaRespondido) ? tempoResposta : -1;
 	}
 
 	public void setTempoResposta(int tempoResposta) {

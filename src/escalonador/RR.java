@@ -16,11 +16,10 @@ public class RR extends Processador {
 		p.setTempoEspera(this.tempoExecucao - p.getTempoInicial() - p.getTempoExecutado());
 		p.setTempoExecutado(p.getTempoExecutado() + tempQuantum);
 		p.setTempoRetorno(p.getTempoExecutado() + p.getTempoEspera());
-
 		p.setTempoResposta(this.tempoExecucao - p.getTempoInicial());
-		
+
 		this.imprimirExecucao(p, tempQuantum);
-		
+
 		this.tempoExecucao += tempQuantum;
 	}
 
