@@ -25,10 +25,9 @@ public class Main {
 		finalizados.imprimirTempos("SJF");
 
 		CPU = new RR(2);
+		novos = new FilaProcessos(processos);		
 		finalizados = new FilaProcessos();
-		novos = new FilaProcessos(processos);
 		CPU.executar(novos, finalizados);
 		finalizados.imprimirTempos("RR");
 	}
-
 }
