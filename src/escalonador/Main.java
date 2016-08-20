@@ -1,9 +1,16 @@
 package escalonador;
+/**
+ * Implementação de algoritmos de escalonamento 
+ * 
+ * @author  J. Eurique C. Ribeiro Jr
+ * @author  Guilherme Boroni Pereira
+ */
 
 public class Main {
 
 	public static void main(String[] args) {
-		String lote = "F:\\WorkSpace\\Escalonamento\\lote.txt";
+		// Arquivo do lote se encontra junto aos arquivos do projeto
+		String lote = "lote.txt";
 
 		Processador CPU;
 		FilaProcessos novos;
